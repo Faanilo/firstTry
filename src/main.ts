@@ -4,13 +4,21 @@ import * as THREE from 'three';
 const width = window.innerWidth
 const height = window.innerHeight
 
-const renderer = new THREE.WebGL1Renderer({
-  canvas: document.getElementById('app') as HTMLCanvasElement
+const renderer = new THREE.WebGLRenderer({
+	canvas: document.getElementById('app') as HTMLCanvasElement
 })
+renderer.setSize(width, height)
 
-renderer.setSize(width,height)
 
-const mainCamera = new THREE.PerspectiveCamera(60,width/height,0.1,100)
+
+const mainCamera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100)
 const scene = new THREE.Scene()
+const geometry = new THREE.BoxGeometry()
+const material = new THREE.MeshPhongMaterial({ color: 0xFFAD00 })
+const cube = new THREE.Mesh(geometry, material)
+cube.position.z = -5
+cube.position.y = 1
 
-renderer.render(scene,mainCamera)
+scene.add(cube)
+
+renderer.render(scene, mainCamera)
