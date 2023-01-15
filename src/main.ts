@@ -10,10 +10,17 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(width, height)
 
 
-//field view  / aspect ratio / near plane /  far plane >>
+//field view  / aspect ratio / near plane /  far plane 
 const mainCamera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100)
 const scene = new FirstScene()
 scene.initialize()
 
+function tick ()
+{
+  scene.update()
+  renderer.render(scene,mainCamera)
+  requestAnimationFrame(tick)
+}
 
-renderer.render(scene, mainCamera)
+tick()
+

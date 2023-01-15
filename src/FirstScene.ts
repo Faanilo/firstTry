@@ -14,4 +14,7 @@ export default class FirstScene extends THREE.Scene {
 
         this.add(light)
     }
+    update(){
+        
+    }
 }
