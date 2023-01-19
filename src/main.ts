@@ -1,26 +1,24 @@
-import * as THREE from 'three';
-import FirstScene from './FirstScene';
+import * as THREE from 'three'
+import BlasterScene from './BlasterScene'
 
 const width = window.innerWidth
 const height = window.innerHeight
 
 const renderer = new THREE.WebGLRenderer({
-  canvas: document.getElementById('app') as HTMLCanvasElement
+	canvas: document.getElementById('app') as HTMLCanvasElement
 })
 renderer.setSize(width, height)
 
-
-//field view  / aspect ratio / near plane /  far plane 
 const mainCamera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100)
-const scene = new FirstScene()
+
+const scene = new BlasterScene(mainCamera)
 scene.initialize()
 
-function tick ()
+function tick()
 {
-  scene.update()
-  renderer.render(scene,mainCamera)
-  requestAnimationFrame(tick)
+	scene.update()
+	renderer.render(scene, mainCamera)
+	requestAnimationFrame(tick)
 }
 
 tick()
-
